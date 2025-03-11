@@ -1,0 +1,1 @@
+# pytest-rest-api-testing-template
