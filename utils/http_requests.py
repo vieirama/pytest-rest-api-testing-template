@@ -7,7 +7,7 @@ from types import SimpleNamespace
 class Response:
     status_code: int
     headers: dict
-    json: object
+    response_json: str
     obj: SimpleNamespace
     
 
@@ -30,14 +30,11 @@ class Request:
         return self.__get_response(response)
 
     def __get_response(self, response):
-        status_code = response.status_code
-        headers = response.headers
-        
         try:
-            response_json = response.json()
             obj = json.loads(response.text, object_hook=lambda d: SimpleNamespace(**d))
+            response_json = response.json()
         except Exception:
-            response_json = {}
             obj = SimpleNamespace()
+            response_json = {}
         
-        return Response(status_code, headers, response_json, obj)
+        return Response(response.status_code, response.headers, response_json, obj)

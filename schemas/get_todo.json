@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "number",
+        "minimum": 0
+      },
+      "id": {
+        "type": "number",
+        "minimum": 0
+      },
+      "title": {
+        "type": "string",
+        "minLength": 0
+      },
+      "completed": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "userId",
+      "id",
+      "title",
+      "completed"
+    ]
+  }

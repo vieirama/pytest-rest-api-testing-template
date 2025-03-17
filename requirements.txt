@@ -2,3 +2,4 @@ requests
 pytest
 pytest-html
 pytest-xdist
+jsonschema

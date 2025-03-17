@@ -1,5 +1,6 @@
-import requests
 import pytest
+
+from utils.schema_validation import SchemaValidation
 
 class TestTodos:
 
@@ -8,6 +9,9 @@ class TestTodos:
 
         assert response.status_code == 200
         assert len(response.obj) > 0
+
+        schema_validation = SchemaValidation("get_todos", response.response_json)
+        schema_validation.validate_schema()
 
     @pytest.mark.parametrize("todo_id, expected_user_id, expected_title, expected_completed",
                              [(1, 1, "delectus aut autem", False),
@@ -20,6 +24,9 @@ class TestTodos:
         assert response.obj.userId == expected_user_id
         assert response.obj.title == expected_title
         assert response.obj.completed == expected_completed
+
+        schema_validation = SchemaValidation("get_todo", response.response_json)
+        schema_validation.validate_schema()
     
     @pytest.mark.parametrize("user_id, title, completed",
                              [(1, "This is a new Todo", False),
