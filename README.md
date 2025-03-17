@@ -22,8 +22,15 @@ python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Execution
+## Local execution
 
 ```commandline
 pytest --env=dev
+```
+
+## Container execution
+
+```commandline
+podman build -t pytest-testing:latest .
+podman run pytest-testing
 ```

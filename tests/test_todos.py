@@ -32,11 +32,7 @@ class TestTodos:
                              [(1, "This is a new Todo", False),
                               (2, "This is another Todo", True)])
     def test_create_todo(self, todo_controller, user_id, title, completed):
-        body = {
-            'userId': user_id,
-            'title': title,
-            'completed': completed
-        }
+        body = {'userId': user_id, 'title': title, 'completed': completed}
 
         response = todo_controller.create(body)
 
